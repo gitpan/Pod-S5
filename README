@@ -116,6 +116,9 @@ LICENSE AND COPYRIGHT
     This tool is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
 
+    S5 Copyright (c) 2007 Eric Meyer S5 Version 1.2a (Attribution-ShareAlike
+    2.0 License)
+
 BUGS AND LIMITATIONS
     See rt.cpan.org for current bugs, if any.
 
@@ -129,5 +132,5 @@ AUTHOR
     Thomas Linden <tlinden |AT| cpan.org>
 
 VERSION
-    0.01
+    0.02
 
