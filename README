@@ -103,6 +103,8 @@ POD
         Syntax::Highlight::Engine::Kate manpage.
 
 DEPENDENCIES
+    Pod::S5
+
     unzip(1)
 
     Syntax::Highlight::Engine::Kate is optional.
@@ -132,5 +134,5 @@ AUTHOR
     Thomas Linden <tlinden |AT| cpan.org>
 
 VERSION
-    0.02
+    0.04
 
