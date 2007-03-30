@@ -3,7 +3,7 @@
 use Test::More qw(no_plan);
 use lib qw(.);
 
-if ( system ( qq($^X blib/script/pod2s5 > /dev/null 2>&1) )) {
+if ( system ( qq(perl blib/script/pod2s5 > /dev/null 2>&1) )) {
   fail ("Could not execute pod2s5: $!");
 }
 else {
@@ -11,7 +11,7 @@ else {
 }
 
 # create a slideshow
-my $cmd = qq( $^X blib/script/pod2s5 ) .
+my $cmd = qq( perl blib/script/pod2s5 ) .
   qq(--theme     'flower' ) .
   qq(--author    'make test' ) .
   qq(--creation  '13.Nov.2007' ) .
