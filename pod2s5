@@ -48,7 +48,7 @@
 
 package Pod::S5::Script;
 
-$Pod::S5::Script::VERSION = 0.05;
+$Pod::S5::Script::VERSION = 0.06;
 
 use Pod::S5;
 use Getopt::Long;
@@ -357,7 +357,7 @@ Thomas Linden <tlinden |AT| cpan.org>
 
 =head1 VERSION
 
-0.05
+0.06
 
 =cut
 

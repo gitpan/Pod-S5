@@ -48,7 +48,7 @@
 
 package Pod::S5;
 
-$Pod::S5::VERSION = 0.05;
+$Pod::S5::VERSION = 0.06;
 
 use Pod::Tree;
 use Carp;
@@ -788,7 +788,7 @@ Thomas Linden <tlinden |AT| cpan.org>
 
 =head1 VERSION
 
-0.05
+0.06
 
 =cut
 
