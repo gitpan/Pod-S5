@@ -48,7 +48,7 @@
 
 package Pod::S5;
 
-$Pod::S5::VERSION = 0.07;
+$Pod::S5::VERSION = 0.08;
 
 use Pod::Tree;
 use Carp;
@@ -83,7 +83,7 @@ use vars qw(%syntax %highlite $substitutions $head $foot $s5);
 
 # used for syntax highlighting, if Syntax::Highlight::Engine::Kate
 # is installed and the Code in question is supported
-%highlite = {
+%highlite = ( 
                 Alert => ['<font color="#0000ff">', '</font>'],
                 BaseN => ['<font color="#007f00">', '</font>'],
                 BString => ['<font color="#c9a7ff">', '</font>'],
@@ -104,7 +104,7 @@ use vars qw(%syntax %highlite $substitutions $head $foot $s5);
                 String => ['<font color="#ff0000">', '</font>'],
                 Variable => ['<font color="#0000ff"><b>', '</b></font>'],
                 Warning => ['<font color="#0000ff"><b><i>', '</font>'],
-	       };
+	       );
 
 $substitutions = {
 		     '<' => '&lt;',
@@ -487,6 +487,9 @@ sub walk_code {
   return;
 }
 
+# avoid that AUTOLOAD() catches it
+sub DESTROY {}
+
 sub AUTOLOAD {
   # here comes the magic, we catch the formatter sub
   # called by walker() containing the highlite syntax
@@ -788,7 +791,7 @@ Thomas Linden <tlinden |AT| cpan.org>
 
 =head1 VERSION
 
-0.07
+0.08
 
 =cut
 

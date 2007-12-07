@@ -1,0 +1,11 @@
+0.08:
+
+fixed rt.cpan.org#28392 and #28391, the %highlite hash is now
+correctly formatted and the S5 source is no longer supplied as
+embedded zip archive but will now installed inside the module
+install dir and copied from there if pod2s5 requests it.
+
+
+0.07:
+
+first public version.

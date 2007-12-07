@@ -59,7 +59,7 @@ Benannter Link: L<Daemon|http://www.daemon.de>.
 
 =head1 Ein Bild
 
-G<http://meyerweb.com/eric/tools/s5/pix/s5filemap.png>
+G<pix/s5filemap.png>
 
 =head1 Incremental Liste
 
