@@ -113,7 +113,7 @@ DEPENDENCIES
     you generate a new slide.
 
 LICENSE AND COPYRIGHT
-    Copyright (c) 2007 Thomas Linden
+    Copyright (c) 2007-2013 Thomas Linden
 
     This tool is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
@@ -134,5 +134,5 @@ AUTHOR
     Thomas Linden <tlinden |AT| cpan.org>
 
 VERSION
-    0.07
+    0.09
 

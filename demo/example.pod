@@ -9,6 +9,12 @@ S5 erstellen.
 
 Es folgen einige Beispiele:
 
+=begin note
+
+Ich spreche kein Deutsch.
+
+=end note
+
 =head1 Source Code
 
 =begin perl
@@ -59,7 +65,7 @@ Benannter Link: L<Daemon|http://www.daemon.de>.
 
 =head1 Ein Bild
 
-G<pix/s5filemap.png>
+G<http://meyerweb.com/eric/tools/s5/pix/s5filemap.png>
 
 =head1 Incremental Liste
 

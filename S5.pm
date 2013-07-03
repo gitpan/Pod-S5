@@ -3,27 +3,27 @@
  #   map perl POD to S5
  #
  #
- #   This  file  is  part of the  PodWiki  web-based authoring tool.
+ #   This  file  is  part of the  Pod2S5.
  #
- #   By  accessing  this software,  PodWiki,  you are  duly informed
+ #   By  accessing  this software,  Pod2S5,  you are  duly informed
  #   of and  agree to be  bound  by the  conditions  described below
  #   in this notice:
  #
- #   This software product, PodWiki,  is developed by  Thomas Linden
- #   and      copyrighted  (C) 2007     by  Thomas Linden,  with all
+ #   This software product, Pod2S5,  is developed by  Thomas Linden
+ #   and     copyrighted  (C) 2007-2013 by  Thomas Linden,  with all
  #   rights reserved.
  #
- #   There is  no charge for  PodWiki software. You can redistribute
+ #   There is  no charge for  Pod2S5 software. You can redistribute
  #   it and/or modify it under  the terms of the  GNU General Public
  #   License, which is incorporated by reference herein.
  #
- #   PodWiki is distributed WITHOUT ANY WARRANTY,IMPLIED OR EXPRESS,
+ #   Pod2S5 is distributed WITHOUT ANY WARRANTY,IMPLIED OR EXPRESS,
  #   OF  MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE or that
  #   the  use of it will not infringe on any third party's intellec-
  #   tual property rights.
  #
  #   You  should  have  received a  copy  of  the GNU General Public
- #   License along with PodWiki.  Copies  can also be obtained from:
+ #   License along with Pod2S5.  Copies  can also be obtained from:
  #
  #     http://www.gnu.org/copyleft/gpl.html
  #
@@ -48,7 +48,7 @@
 
 package Pod::S5;
 
-$Pod::S5::VERSION = 0.08;
+$Pod::S5::VERSION = 0.09;
 
 use Pod::Tree;
 use Carp;
@@ -83,7 +83,7 @@ use vars qw(%syntax %highlite $substitutions $head $foot $s5);
 
 # used for syntax highlighting, if Syntax::Highlight::Engine::Kate
 # is installed and the Code in question is supported
-%highlite = ( 
+%highlite = {
                 Alert => ['<font color="#0000ff">', '</font>'],
                 BaseN => ['<font color="#007f00">', '</font>'],
                 BString => ['<font color="#c9a7ff">', '</font>'],
@@ -104,7 +104,7 @@ use vars qw(%syntax %highlite $substitutions $head $foot $s5);
                 String => ['<font color="#ff0000">', '</font>'],
                 Variable => ['<font color="#0000ff"><b>', '</b></font>'],
                 Warning => ['<font color="#0000ff"><b><i>', '</font>'],
-	       );
+	       };
 
 $substitutions = {
 		     '<' => '&lt;',
@@ -487,9 +487,6 @@ sub walk_code {
   return;
 }
 
-# avoid that AUTOLOAD() catches it
-sub DESTROY {}
-
 sub AUTOLOAD {
   # here comes the magic, we catch the formatter sub
   # called by walker() containing the highlite syntax
@@ -541,11 +538,22 @@ sub formatter_text {
   $s5 .= qq(<pre>$_</pre>); # 1:1 txt content
 }
 
+sub formatter_note {
+  my($text) = @_;
+  local $_ = $text;
+
+  s/\s\s*$/ /gs;             # remove trailing spaces
+  s/</&lt;/gs;               # replace <
+  $s5 .= qq(<div class="notes">$_</div>); # notes
+}
+
+
 sub formatter_html {
   my($text) = @_;
   # keep the input as is
   $s5 .= $text;
 }
+
 
 sub prepare {
   my($text) = @_;
@@ -749,6 +757,18 @@ Example:
 To get a list of the available languages, refer to the
 L<Syntax::Highlight::Engine::Kate> manpage.
 
+=item
+
+Notes can be added to a slide by inserting a B<note> formatter, eg:
+
+ =begin note
+
+ some additional stuff
+
+ =end note
+
+It will be rendered as plain text.
+
 =back
 
 
@@ -765,7 +785,7 @@ delivered together with B<Pod::S5>.
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (c) 2007 Thomas Linden
+Copyright (c) 2007-2011 Thomas Linden
 
 This tool is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
@@ -791,7 +811,7 @@ Thomas Linden <tlinden |AT| cpan.org>
 
 =head1 VERSION
 
-0.08
+0.09
 
 =cut
 
